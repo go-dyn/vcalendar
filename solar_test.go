@@ -19,16 +19,8 @@ func TestString(t *testing.T) {
 	for _, v := range tc {
 		timeLoc, _ := time.LoadLocation("Asia/Ho_Chi_Minh")
 		today := time.Date(v.day[2], time.Month(v.day[1]), v.day[0], 0, 0, 0, 0, timeLoc)
-		s := Solar{
-			Date: Calendar{
-				Time:  today,
-				Day:   today.Day(),
-				Month: int(today.Month()),
-				Year:  today.Year(),
-				Type:  SOLAR,
-			},
-		}
-
+		s := &Calendar{}
+		s.FromSolar(today)
 		if s.String() != v.expected {
 			t.Errorf("Failed: %v.\nExpected: %s.\nGot: %s", v.day, v.expected, s.String())
 		}

@@ -21,17 +21,17 @@ var testCases = []struct {
 	},
 }
 
-func TestNewVCalendar(t *testing.T) {
+func TestNewVvCalendar(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			l := New(tc.date)
+			l := NewLuna(tc.date)
 			result := l.DayAlias()
 
 			if result != tc.expectedDayAlias {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedDayAlias, result)
+				t.Errorf("Unexpected result for %v-%v: %s. Expected: %s, got: %s", l.DayCan(), tc.date, tc.name, tc.expectedDayAlias, result)
 			}
 
-			c := NewWithLunar(l.Date.Day, l.Date.Month, l.Date.Year, l.Leap, *l.Date.Time.Location())
+			c := NewLunarFromLunar(l.GetDay(), l.GetIntMonth(), l.GetYear(), l.IsLeap(), *l.GetLocation())
 
 			if c.DayAlias() != tc.expectedDayAlias {
 				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedDayAlias, c.DayAlias())

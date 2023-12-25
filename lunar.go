@@ -2,66 +2,63 @@ package vcalendar
 
 import (
 	"fmt"
+	"time"
 )
 
-func (l *Lunar) String() string {
-	return fmt.Sprintf("ngày %s, tháng %s, năm %s", l.DayAlias(), l.MonthAlias(), l.YearAlias())
+func (l *Calendar) DayAlias() string {
+	return fmt.Sprintf("%s %s", l.DayCan(), l.DayChi())
 }
 
-func (l *Lunar) DayAlias() string {
-	return fmt.Sprintf("%s %s", l.dayCan(), l.dayChi())
-}
-
-func (l *Lunar) dayCan() string {
-	jd := date2JuliusDay(l.Date.Time.Day(), int(l.Date.Time.Month()), l.Date.Time.Year())
+func (l *Calendar) DayCan() string {
+	jd := DateToJuliusDay(l.GetDay(), l.GetIntMonth(), l.GetYear())
 	return CAN[(jd+9)%10]
 }
 
-func (l *Lunar) dayChi() string {
-	jd := date2JuliusDay(l.Date.Time.Day(), int(l.Date.Time.Month()), l.Date.Time.Year())
+func (l *Calendar) DayChi() string {
+	jd := DateToJuliusDay(l.GetDay(), l.GetIntMonth(), l.GetYear())
 	return CHI[(jd+1)%12]
 }
 
-func (l *Lunar) MonthAlias() string {
-	if l.Leap {
-		return fmt.Sprintf("%s %s Nhuận", l.monthCan(), l.monthChi())
+func (l *Calendar) MonthAlias() string {
+	if l.IsLeap() {
+		return fmt.Sprintf("%s %s Nhuận", l.MonthCan(), l.MonthChi())
 	}
-	return fmt.Sprintf("%s %s", l.monthCan(), l.monthChi())
+	return fmt.Sprintf("%s %s", l.MonthCan(), l.MonthChi())
 }
 
-func (l *Lunar) monthCan() string {
-	i := (l.Date.Year*12 + l.Date.Month + 3) % 10
+func (l *Calendar) MonthCan() string {
+	i := (l.GetYear()*12 + l.GetIntMonth() + 3) % 10
 	return CAN[i]
 }
 
-func (l *Lunar) monthChi() string {
-	i := (l.Date.Month + 1) % 12
+func (l *Calendar) MonthChi() string {
+	i := (l.GetIntMonth() + 1) % 12
 	return CHI[i]
 }
 
-func (l *Lunar) YearAlias() string {
-	return fmt.Sprintf("%s %s", l.yearCan(), l.yearChi())
+func (l *Calendar) YearAlias() string {
+	return fmt.Sprintf("%s %s", l.YearCan(), l.YearChi())
 }
 
-func (l *Lunar) yearCan() string {
-	i := (l.Date.Year + 6) % 10
+func (l *Calendar) YearCan() string {
+	i := (l.GetYear() + 6) % 10
 	return CAN[i]
 }
 
-func (l *Lunar) yearChi() string {
-	i := (l.Date.Year + 8) % 12
+func (l *Calendar) YearChi() string {
+	i := (l.GetYear() + 8) % 12
 	return CHI[i]
 }
 
-func (l *Lunar) LuckyHour() string {
-	jd := date2JuliusDay(l.Date.Time.Day(), int(l.Date.Time.Month()), l.Date.Time.Year())
+func (l *Calendar) LuckyHour() string {
+	jd := DateToJuliusDay(l.GetDay(), int(l.GetIntMonth()), l.GetYear())
 	chiOfDay := (jd + 1) % 12
 	luckyHour := LUCKY_HOURS[chiOfDay%6]
 
 	return luckyHour
 }
 
-func (l *Lunar) LuckyHourDetail() []LuckyHourDetail {
+func (l *Calendar) LuckyHourDetail() []LuckyHourDetail {
 	ret := []LuckyHourDetail{}
 	luckyHour := l.LuckyHour()
 
@@ -69,9 +66,9 @@ func (l *Lunar) LuckyHourDetail() []LuckyHourDetail {
 		index := luckyHour[i]
 		if index == '1' {
 			detail := LuckyHourDetail{
-				Chi:  CHI[i],
-				From: (i*2 + 23) % 24,
-				To:   (i*2 + 1) % 24,
+				chi:  CHI[i],
+				from: (i*2 + 23) % 24,
+				to:   (i*2 + 1) % 24,
 			}
 			ret = append(ret, detail)
 		}
@@ -79,20 +76,20 @@ func (l *Lunar) LuckyHourDetail() []LuckyHourDetail {
 	return ret
 }
 
-func (l *Lunar) SolarTerms() SolarTerm {
-	//_, offset := l.Time.Zone()
-	jd := date2JuliusDay(l.Date.Time.Day(), int(l.Date.Time.Month()), l.Date.Time.Year())
-	solarTerm := getSolarTerm(jd+1, 7.0)
+func (l *Calendar) SolarTerms() SolarTerm {
+	//_, offset := l.Zone()
+	jd := DateToJuliusDay(l.GetDay(), int(l.GetIntMonth()), l.GetYear())
+	solarTerm := GetSolarTerm(jd+1, 7.0)
 	return SOLAR_TERMS[solarTerm]
 }
 
-func (l *Lunar) Events() []YearEvent {
+func (l *Calendar) Events() []YearEvent {
 	events := []YearEvent{}
-	dd := l.Date.Day
-	mm := l.Date.Month
+	dd := l.GetDay()
+	mm := l.GetIntMonth()
 	for i := 0; i < len(YEARLY_EVENTS); i++ {
 		event := YEARLY_EVENTS[i]
-		if event.Day == dd && event.Month == mm && event.Type == LUNAR {
+		if event.day == dd && event.month == mm && event.kind == LUNAR {
 			events = append(events, event)
 		}
 	}
@@ -100,29 +97,25 @@ func (l *Lunar) Events() []YearEvent {
 	return events
 }
 
-func (l *Lunar) ToSolar() Solar {
-	d, m, y := Lunar2Solar(l.Date.Day, l.Date.Month, l.Date.Year, b2i(l.Leap), getTz(l.Date.Time))
-	return Solar{
-		Date: Calendar{
-			Day:   d,
-			Month: m,
-			Year:  y,
-			Type:  SOLAR,
-		},
-	}
+func (l *Calendar) ToSolar() Calendar {
+	_, offset := l.Zone()
+	d, m, y := LunarToSolar(l.GetDay(), l.GetIntMonth(), l.GetYear(), BooleanToInt(l.IsLeap()), offset)
+	calendar := &Calendar{}
+	calendar.FromVnLunar(time.Date(y, time.Month(m), d, 0, 0, 0, 0, l.GetLocation()), BooleanToInt(l.IsLeap()))
+	return *calendar
 }
 
-func (l *Lunar) Weekday() int {
-	jd := date2JuliusDay(l.Date.Time.Day(), int(l.Date.Time.Month()), l.Date.Time.Year())
+func (l *Calendar) WeekDay() int {
+	jd := DateToJuliusDay(l.GetDay(), int(l.GetIntMonth()), l.GetYear())
 	return (jd + 1) % 7
 }
 
-func (l *Lunar) WeekdayDisplay() string {
-	day := l.Weekday()
+func (l *Calendar) WeekdayDisplay() string {
+	day := l.WeekDay()
 	return WEEKS[day]
 }
 
 // TODO: implement function
-func (l *Lunar) Next() *Lunar {
+func (l *Calendar) Next() *Calendar {
 	return nil
 }

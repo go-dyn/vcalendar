@@ -8,7 +8,7 @@ import (
 )
 
 var lunarTestCases = []struct {
-	Name                    string
+	name                    string
 	date                    time.Time
 	expectedDayAlias        string
 	expectedMonthAlias      string
@@ -21,7 +21,7 @@ var lunarTestCases = []struct {
 	expectedSolarTerm       SolarTerm
 }{
 	{
-		Name:                   "Test Case 1",
+		name:                   "Test Case 1",
 		date:                   time.Date(2023, time.June, 20, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Kỷ Dậu",
 		expectedMonthAlias:     "Mậu Ngọ",
@@ -31,44 +31,44 @@ var lunarTestCases = []struct {
 		expectedLuckyHour:      "101100110100",
 		expectedEvent:          []YearEvent{},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 75,
-			Name:      "Mang chủng",
+			longitude: 75,
+			name:      "Mang chủng",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 2",
+		name:                   "Test Case 2",
 		date:                   time.Date(2023, time.March, 23, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Canh Thìn",
 		expectedMonthAlias:     "Ất Mão Nhuận",
@@ -78,44 +78,44 @@ var lunarTestCases = []struct {
 		expectedLuckyHour:      "001011001101",
 		expectedEvent:          []YearEvent{},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 0,
-			Name:      "Xuân phân",
+			longitude: 0,
+			name:      "Xuân phân",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 			{
-				Chi:  "Hợi",
-				From: 21,
-				To:   23,
+				chi:  "Hợi",
+				from: 21,
+				to:   23,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 3",
+		name:                   "Test Case 3",
 		date:                   time.Date(2030, time.February, 12, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Mậu Dần",
 		expectedMonthAlias:     "Mậu Dần",
@@ -125,44 +125,44 @@ var lunarTestCases = []struct {
 		expectedLuckyHour:      "110011010010",
 		expectedEvent:          []YearEvent{},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 315,
-			Name:      "Lập xuân",
+			longitude: 315,
+			name:      "Lập xuân",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Tuất",
-				From: 19,
-				To:   21,
+				chi:  "Tuất",
+				from: 19,
+				to:   21,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 4",
+		name:                   "Test Case 4",
 		date:                   time.Date(2004, time.November, 30, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Quý Sửu",
 		expectedMonthAlias:     "Ất Hợi",
@@ -172,44 +172,44 @@ var lunarTestCases = []struct {
 		expectedLuckyHour:      "001101001011",
 		expectedEvent:          []YearEvent{},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 240,
-			Name:      "Tiểu tuyết",
+			longitude: 240,
+			name:      "Tiểu tuyết",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Tuất",
-				From: 19,
-				To:   21,
+				chi:  "Tuất",
+				from: 19,
+				to:   21,
 			},
 			{
-				Chi:  "Hợi",
-				From: 21,
-				To:   23,
+				chi:  "Hợi",
+				from: 21,
+				to:   23,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 5",
+		name:                   "Test Case 5",
 		date:                   time.Date(1997, time.January, 19, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Tân Dậu",
 		expectedMonthAlias:     "Tân Sửu",
@@ -219,44 +219,44 @@ var lunarTestCases = []struct {
 		expectedLuckyHour:      "101100110100",
 		expectedEvent:          []YearEvent{},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 285,
-			Name:      "Tiểu hàn",
+			longitude: 285,
+			name:      "Tiểu hàn",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 6",
+		name:                   "Test Case 6",
 		date:                   time.Date(2024, time.February, 10, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Giáp Thìn",
 		expectedMonthAlias:     "Bính Dần",
@@ -265,50 +265,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Bảy",
 		expectedLuckyHour:      "001011001101",
 		expectedEvent: []YearEvent{{
-			Day:   1,
-			Month: 1,
-			Name:  "Tết Nguyên Đán",
-			Type:  LUNAR,
+			day:   1,
+			month: 1,
+			name:  "Tết Nguyên Đán",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 315,
-			Name:      "Lập xuân",
+			longitude: 315,
+			name:      "Lập xuân",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 			{
-				Chi:  "Hợi",
-				From: 21,
-				To:   23,
+				chi:  "Hợi",
+				from: 21,
+				to:   23,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 7",
+		name:                   "Test Case 7",
 		date:                   time.Date(2024, time.February, 24, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Mậu Ngọ",
 		expectedMonthAlias:     "Bính Dần",
@@ -317,50 +317,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Bảy",
 		expectedLuckyHour:      "110100101100",
 		expectedEvent: []YearEvent{{
-			Day:   15,
-			Month: 1,
-			Name:  "Rằm tháng Giêng",
-			Type:  LUNAR,
+			day:   15,
+			month: 1,
+			name:  "Rằm tháng Giêng",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 330,
-			Name:      "Vũ Thủy",
+			longitude: 330,
+			name:      "Vũ Thủy",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 8",
+		name:                   "Test Case 8",
 		date:                   time.Date(2024, time.April, 18, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Nhâm Tý",
 		expectedMonthAlias:     "Mậu Thìn",
@@ -369,50 +369,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Năm",
 		expectedLuckyHour:      "110100101100",
 		expectedEvent: []YearEvent{{
-			Day:   10,
-			Month: 3,
-			Name:  "Giỗ Tổ Hùng Vương",
-			Type:  LUNAR,
+			day:   10,
+			month: 3,
+			name:  "Giỗ Tổ Hùng Vương",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 15,
-			Name:      "Thanh minh",
+			longitude: 15,
+			name:      "Thanh minh",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 9",
+		name:                   "Test Case 9",
 		date:                   time.Date(2024, time.May, 22, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Bính Tuất",
 		expectedMonthAlias:     "Kỷ Tỵ",
@@ -421,50 +421,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Tư",
 		expectedLuckyHour:      "001011001101",
 		expectedEvent: []YearEvent{{
-			Day:   15,
-			Month: 4,
-			Name:  "Phật Đản",
-			Type:  LUNAR,
+			day:   15,
+			month: 4,
+			name:  "Phật Đản",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 60,
-			Name:      "Tiểu mãn",
+			longitude: 60,
+			name:      "Tiểu mãn",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Thân",
-				From: 15,
-				To:   17,
+				chi:  "Thân",
+				from: 15,
+				to:   17,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 			{
-				Chi:  "Hợi",
-				From: 21,
-				To:   23,
+				chi:  "Hợi",
+				from: 21,
+				to:   23,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 10",
+		name:                   "Test Case 10",
 		date:                   time.Date(2024, time.June, 10, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Ất Tỵ",
 		expectedMonthAlias:     "Canh Ngọ",
@@ -473,50 +473,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Hai",
 		expectedLuckyHour:      "010010110011",
 		expectedEvent: []YearEvent{{
-			Day:   5,
-			Month: 5,
-			Name:  "Lễ Đoan Ngọ",
-			Type:  LUNAR,
+			day:   5,
+			month: 5,
+			name:  "Lễ Đoan Ngọ",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 75,
-			Name:      "Mang chủng",
+			longitude: 75,
+			name:      "Mang chủng",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Tuất",
-				From: 19,
-				To:   21,
+				chi:  "Tuất",
+				from: 19,
+				to:   21,
 			},
 			{
-				Chi:  "Hợi",
-				From: 21,
-				To:   23,
+				chi:  "Hợi",
+				from: 21,
+				to:   23,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 11",
+		name:                   "Test Case 11",
 		date:                   time.Date(2024, time.August, 18, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Giáp Dần",
 		expectedMonthAlias:     "Nhâm Thân",
@@ -525,50 +525,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Chủ Nhật",
 		expectedLuckyHour:      "110011010010",
 		expectedEvent: []YearEvent{{
-			Day:   15,
-			Month: 7,
-			Name:  "Vu Lan",
-			Type:  LUNAR,
+			day:   15,
+			month: 7,
+			name:  "Vu Lan",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 135,
-			Name:      "Lập thu",
+			longitude: 135,
+			name:      "Lập thu",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Tuất",
-				From: 19,
-				To:   21,
+				chi:  "Tuất",
+				from: 19,
+				to:   21,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 12",
+		name:                   "Test Case 12",
 		date:                   time.Date(2024, time.September, 17, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Giáp Thân",
 		expectedMonthAlias:     "Quý Dậu",
@@ -577,50 +577,50 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Ba",
 		expectedLuckyHour:      "110011010010",
 		expectedEvent: []YearEvent{{
-			Day:   15,
-			Month: 8,
-			Name:  "Tết Trung Thu",
-			Type:  LUNAR,
+			day:   15,
+			month: 8,
+			name:  "Tết Trung Thu",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 165,
-			Name:      "Bạch lộ",
+			longitude: 165,
+			name:      "Bạch lộ",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Sửu",
-				From: 1,
-				To:   3,
+				chi:  "Sửu",
+				from: 1,
+				to:   3,
 			},
 			{
-				Chi:  "Thìn",
-				From: 7,
-				To:   9,
+				chi:  "Thìn",
+				from: 7,
+				to:   9,
 			},
 			{
-				Chi:  "Tỵ",
-				From: 9,
-				To:   11,
+				chi:  "Tỵ",
+				from: 9,
+				to:   11,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Tuất",
-				From: 19,
-				To:   21,
+				chi:  "Tuất",
+				from: 19,
+				to:   21,
 			},
 		},
 	},
 	{
-		Name:                   "Test Case 13",
+		name:                   "Test Case 13",
 		date:                   time.Date(2025, time.January, 22, 0, 0, 0, 0, VietnamLocation()),
 		expectedDayAlias:       "Tân Mão",
 		expectedMonthAlias:     "Đinh Sửu",
@@ -629,45 +629,45 @@ var lunarTestCases = []struct {
 		expectedWeekdayDisplay: "Thứ Tư",
 		expectedLuckyHour:      "101100110100",
 		expectedEvent: []YearEvent{{
-			Day:   23,
-			Month: 12,
-			Name:  "Ông Táo chầu trời",
-			Type:  LUNAR,
+			day:   23,
+			month: 12,
+			name:  "Ông Táo chầu trời",
+			kind:  LUNAR,
 		}},
 		expectedSolarTerm: SolarTerm{
-			Longitude: 300,
-			Name:      "Đại hàn",
+			longitude: 300,
+			name:      "Đại hàn",
 		},
 		expectedLuckyHourDetail: []LuckyHourDetail{
 			{
-				Chi:  "Tý",
-				From: 23,
-				To:   1,
+				chi:  "Tý",
+				from: 23,
+				to:   1,
 			},
 			{
-				Chi:  "Dần",
-				From: 3,
-				To:   5,
+				chi:  "Dần",
+				from: 3,
+				to:   5,
 			},
 			{
-				Chi:  "Mão",
-				From: 5,
-				To:   7,
+				chi:  "Mão",
+				from: 5,
+				to:   7,
 			},
 			{
-				Chi:  "Ngọ",
-				From: 11,
-				To:   13,
+				chi:  "Ngọ",
+				from: 11,
+				to:   13,
 			},
 			{
-				Chi:  "Mùi",
-				From: 13,
-				To:   15,
+				chi:  "Mùi",
+				from: 13,
+				to:   15,
 			},
 			{
-				Chi:  "Dậu",
-				From: 17,
-				To:   19,
+				chi:  "Dậu",
+				from: 17,
+				to:   19,
 			},
 		},
 	},
@@ -675,12 +675,12 @@ var lunarTestCases = []struct {
 
 func TestToString(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.String()
-			expect := fmt.Sprintf("ngày %s, tháng %s, năm %s", tc.expectedDayAlias, tc.expectedMonthAlias, tc.expectedYearAlias)
+			expect := fmt.Sprintf("%s-%s-%s", tc.expectedDayAlias, tc.expectedMonthAlias, tc.expectedYearAlias)
 			if result != expect {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedDayAlias, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, expect, result)
 			}
 		})
 	}
@@ -688,12 +688,12 @@ func TestToString(t *testing.T) {
 
 func TestDayAlias(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.DayAlias()
 
 			if result != tc.expectedDayAlias {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedDayAlias, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedDayAlias, result)
 			}
 		})
 	}
@@ -701,12 +701,12 @@ func TestDayAlias(t *testing.T) {
 
 func TestMonthAlias(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.MonthAlias()
 
 			if result != tc.expectedMonthAlias {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedMonthAlias, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedMonthAlias, result)
 			}
 		})
 	}
@@ -714,12 +714,12 @@ func TestMonthAlias(t *testing.T) {
 
 func TestYearAlias(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.YearAlias()
 
 			if result != tc.expectedYearAlias {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedYearAlias, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedYearAlias, result)
 			}
 		})
 	}
@@ -727,13 +727,13 @@ func TestYearAlias(t *testing.T) {
 
 func TestToSolar(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			s := l.ToSolar()
-			result := s.Date.Day
+			result := s.GetDay()
 
 			if result != tc.date.Day() {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %d", tc.Name, tc.expectedYearAlias, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %d", tc.name, tc.expectedYearAlias, result)
 			}
 		})
 	}
@@ -741,26 +741,26 @@ func TestToSolar(t *testing.T) {
 
 func TestWeekday(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			// this is wrong for test case
-			result := l.Weekday()
+			result := l.WeekDay()
 
 			if result != tc.expectedWeekday {
-				t.Errorf("Unexpected result for %s. Expected: %d, got: %d", tc.Name, tc.expectedWeekday, result)
+				t.Errorf("Unexpected result for %s. Expected: %d, got: %d", tc.name, tc.expectedWeekday, result)
 			}
 		})
 	}
 }
 func TestWeekdayDisplay(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			// this is wrong for test case
 			result := l.WeekdayDisplay()
 
 			if result != tc.expectedWeekdayDisplay {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedWeekdayDisplay, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedWeekdayDisplay, result)
 			}
 		})
 	}
@@ -768,12 +768,12 @@ func TestWeekdayDisplay(t *testing.T) {
 
 func TestNext(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.Next()
 
 			if result != nil {
-				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.Name, nil, result)
+				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.name, nil, result)
 			}
 		})
 	}
@@ -781,12 +781,12 @@ func TestNext(t *testing.T) {
 
 func TestLuckyHour(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.LuckyHour()
 
 			if result != tc.expectedLuckyHour {
-				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.Name, tc.expectedLuckyHour, result)
+				t.Errorf("Unexpected result for %s. Expected: %s, got: %s", tc.name, tc.expectedLuckyHour, result)
 			}
 		})
 	}
@@ -794,11 +794,11 @@ func TestLuckyHour(t *testing.T) {
 
 func TestLuckyHourDetail(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.LuckyHourDetail()
 			if !reflect.DeepEqual(result, tc.expectedLuckyHourDetail) {
-				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.Name, tc.expectedLuckyHourDetail, result)
+				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.name, tc.expectedLuckyHourDetail, result)
 			}
 
 		})
@@ -807,11 +807,11 @@ func TestLuckyHourDetail(t *testing.T) {
 
 func TestEvents(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.Events()
 			if !reflect.DeepEqual(result, tc.expectedEvent) {
-				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.Name, tc.expectedEvent, result)
+				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.name, tc.expectedEvent, result)
 			}
 
 		})
@@ -820,11 +820,11 @@ func TestEvents(t *testing.T) {
 
 func TestSolarTerms(t *testing.T) {
 	for _, tc := range lunarTestCases {
-		t.Run(tc.Name, func(t *testing.T) {
-			l := New(tc.date)
+		t.Run(tc.name, func(t *testing.T) {
+			l := NewLuna(tc.date)
 			result := l.SolarTerms()
 			if !reflect.DeepEqual(result, tc.expectedSolarTerm) {
-				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.Name, tc.expectedSolarTerm, result)
+				t.Errorf("Unexpected result for %s. Expected: %v, got: %v", tc.name, tc.expectedSolarTerm, result)
 			}
 
 		})

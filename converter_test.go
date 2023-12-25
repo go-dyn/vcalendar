@@ -13,10 +13,10 @@ type TestCase struct {
 	Lunar []int `json:"lunar"`
 }
 
-func TestSolar2Lunar(t *testing.T) {
+func TestSolarToLunar(t *testing.T) {
 	testCases := readTestData()
 	for _, v := range testCases {
-		d, m, y, leap := Solar2Lunar(v.Solar[0], v.Solar[1], v.Solar[2], v.Solar[3])
+		d, m, y, leap := SolarToLunar(v.Solar[0], v.Solar[1], v.Solar[2], v.Solar[3])
 
 		if d != v.Lunar[0] || m != v.Lunar[1] || y != v.Lunar[2] || v.Lunar[3] != leap {
 			t.Errorf("Failed test case: %v\nExpect: %v\nGot: %v %v %v %v", v.Solar, v.Lunar, d, m, y, leap)
@@ -24,10 +24,10 @@ func TestSolar2Lunar(t *testing.T) {
 	}
 }
 
-func TestLunar2Solar(t *testing.T) {
+func TestLunarToSolar(t *testing.T) {
 	testCases := readTestData()
 	for _, v := range testCases {
-		d, m, y := Lunar2Solar(v.Lunar[0], v.Lunar[1], v.Lunar[2], v.Lunar[3], 7)
+		d, m, y := LunarToSolar(v.Lunar[0], v.Lunar[1], v.Lunar[2], v.Lunar[3], 7)
 
 		if d != v.Solar[0] || m != v.Solar[1] || y != v.Solar[2] {
 			t.Errorf("Failed test case: %v\nExpect: %v\nGot: %v %v %v", v.Lunar, v.Solar, d, m, y)
@@ -35,10 +35,10 @@ func TestLunar2Solar(t *testing.T) {
 	}
 }
 
-func TestLunar2SolarTimeZone0(t *testing.T) {
+func TestLunarToSolarTimeZone0(t *testing.T) {
 	testCases := readTestData0()
 	for _, v := range testCases {
-		d, m, y := Lunar2Solar(v.Lunar[0], v.Lunar[1], v.Lunar[2], v.Lunar[3], 0)
+		d, m, y := LunarToSolar(v.Lunar[0], v.Lunar[1], v.Lunar[2], v.Lunar[3], 0)
 
 		if d != v.Solar[0] || m != v.Solar[1] || y != v.Solar[2] {
 			t.Errorf("Failed test case: %v\nExpect: %v\nGot: %v %v %v", v.Lunar, v.Solar, d, m, y)
@@ -107,7 +107,7 @@ func TestDate2JuliusDay(t *testing.T) {
 	}
 
 	for _, v := range tc {
-		day, month, year := juliusDay2Date(v.jd)
+		day, month, year := JuliusDayToDate(v.jd)
 		if day != v.expected[0] || month != v.expected[1] || year != v.expected[2] {
 			t.Errorf("Failed: %v.\nExpected: %d.\nGot: %d", v.name, v.expected, struct {
 				day   int
@@ -142,7 +142,7 @@ func TestJuliusDay2Date(t *testing.T) {
 	}
 
 	for _, v := range tc {
-		jd := date2JuliusDay(v.day[0], v.day[1], v.day[2])
+		jd := DateToJuliusDay(v.day[0], v.day[1], v.day[2])
 		if jd != v.expected {
 			t.Errorf("Failed: %v.\nExpected: %d.\nGot: %d", v.day, v.expected, jd)
 		}
@@ -177,7 +177,7 @@ func TestNewMoon(t *testing.T) {
 	}
 
 	for _, v := range tc {
-		jd := newMoon(v.k)
+		jd := NewMoon(v.k)
 		if !withTolerane(jd, v.expected) {
 			t.Errorf("Failed: %v.\nExpected: %f.\nGot: %f", v.k, v.expected, jd)
 		}

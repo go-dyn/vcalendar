@@ -44,7 +44,7 @@ fmt.Println(solar.String()) // Thứ Hai, ngày 20, tháng 06, năm 2023
 timeLoc, _ := time.LoadLocation("Asia/Ho_Chi_Minh")
 today := time.Now().In(timeLoc)
 tz := 7 // GMT +7
-lunD, lunM, lunY, leap := vcalendar.Solar2Lunar(today.Day(), int(today.Month()), today.Year(), tz)
+lunD, lunM, lunY, leap := vcalendar.SolarToLunar(today.Day(), int(today.Month()), today.Year(), tz)
 ```
 
 Đổi từ ngày Âm Lịch sang ngày Dương Lịch
@@ -52,7 +52,7 @@ lunD, lunM, lunY, leap := vcalendar.Solar2Lunar(today.Day(), int(today.Month()),
 ```go
 lunD, lunM, lunY, leap := 1, 1, 2023, 0
 tz := 7 // GMT +7
-d, m, y := vcalendar.Lunar2Solar(lunD, lunM, lunY, leap, tz)
+d, m, y := vcalendar.LunarToSolar(lunD, lunM, lunY, leap, tz)
 ```
 
 ## Todo

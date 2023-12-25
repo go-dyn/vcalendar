@@ -1,10 +1,12 @@
 package vcalendar
 
+import "math"
+
 var (
 	UNKNOWN   = 0
 	SOLAR     = 1
 	LUNAR     = 2
-	PI        = 3.141592653589793
+	PI        = math.Pi
 	VI        = "vi"
 	EN        = "en"
 	CAN       = [10]string{"Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"}
@@ -12,160 +14,160 @@ var (
 	WEEKS     = [7]string{"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"}
 	MONTHS    = [12]string{"Giêng", "Hai", "Ba", "Tư", "Năm", "Sáu", "Bảy", "Tám", "Chín", "Mười", "Một", "Chạp"}
 	LANGUAGES = []Locale{{
-		Code: VI,
-		Name: "Việt Nam",
+		code: VI,
+		name: "Việt Nam",
 	}, {
-		Code: EN,
-		Name: "English",
+		code: EN,
+		name: "English",
 	}}
 	SOLAR_TERMS = []SolarTerm{
 		{
-			Longitude: 0,
-			Name:      "Xuân phân",
+			longitude: 0,
+			name:      "Xuân phân",
 		},
 		{
-			Longitude: 15,
-			Name:      "Thanh minh",
+			longitude: 15,
+			name:      "Thanh minh",
 		},
 		{
-			Longitude: 30,
-			Name:      "Cốc vũ",
+			longitude: 30,
+			name:      "Cốc vũ",
 		},
 		{
-			Longitude: 45,
-			Name:      "Lập hạ",
+			longitude: 45,
+			name:      "Lập hạ",
 		},
 		{
-			Longitude: 60,
-			Name:      "Tiểu mãn",
+			longitude: 60,
+			name:      "Tiểu mãn",
 		},
 		{
-			Longitude: 75,
-			Name:      "Mang chủng",
+			longitude: 75,
+			name:      "Mang chủng",
 		},
 		{
-			Longitude: 90,
-			Name:      "Hạ chí",
+			longitude: 90,
+			name:      "Hạ chí",
 		},
 		{
-			Longitude: 105,
-			Name:      "Tiểu thử",
+			longitude: 105,
+			name:      "Tiểu thử",
 		},
 		{
-			Longitude: 120,
-			Name:      "Đại thử",
+			longitude: 120,
+			name:      "Đại thử",
 		},
 		{
-			Longitude: 135,
-			Name:      "Lập thu",
+			longitude: 135,
+			name:      "Lập thu",
 		},
 		{
-			Longitude: 150,
-			Name:      "Xử thử",
+			longitude: 150,
+			name:      "Xử thử",
 		},
 		{
-			Longitude: 165,
-			Name:      "Bạch lộ",
+			longitude: 165,
+			name:      "Bạch lộ",
 		},
 		{
-			Longitude: 180,
-			Name:      "Thu phân",
+			longitude: 180,
+			name:      "Thu phân",
 		},
 		{
-			Longitude: 195,
-			Name:      "Hàn lộ",
+			longitude: 195,
+			name:      "Hàn lộ",
 		},
 		{
-			Longitude: 210,
-			Name:      "Sương giáng",
+			longitude: 210,
+			name:      "Sương giáng",
 		},
 		{
-			Longitude: 225,
-			Name:      "Lập đông",
+			longitude: 225,
+			name:      "Lập đông",
 		},
 		{
-			Longitude: 240,
-			Name:      "Tiểu tuyết",
+			longitude: 240,
+			name:      "Tiểu tuyết",
 		},
 		{
-			Longitude: 255,
-			Name:      "Đại tuyết",
+			longitude: 255,
+			name:      "Đại tuyết",
 		},
 		{
-			Longitude: 270,
-			Name:      "Đông chí",
+			longitude: 270,
+			name:      "Đông chí",
 		},
 		{
-			Longitude: 285,
-			Name:      "Tiểu hàn",
+			longitude: 285,
+			name:      "Tiểu hàn",
 		},
 		{
-			Longitude: 300,
-			Name:      "Đại hàn",
+			longitude: 300,
+			name:      "Đại hàn",
 		},
 		{
-			Longitude: 315,
-			Name:      "Lập xuân",
+			longitude: 315,
+			name:      "Lập xuân",
 		},
 		{
-			Longitude: 330,
-			Name:      "Vũ Thủy",
+			longitude: 330,
+			name:      "Vũ Thủy",
 		},
 		{
-			Longitude: 345,
-			Name:      "Kinh trập",
+			longitude: 345,
+			name:      "Kinh trập",
 		},
 	}
 	LUCKY_HOURS       = [6]string{"110100101100", "001101001011", "110011010010", "101100110100", "001011001101", "010010110011"}
 	VIETNAM_TIME_ZONE = "Asia/Ho_Chi_Minh"
 	YEARLY_EVENTS     = []YearEvent{
 		{
-			Day:   1,
-			Month: 1,
-			Name:  "Tết Nguyên Đán",
-			Type:  LUNAR,
+			day:   1,
+			month: 1,
+			name:  "Tết Nguyên Đán",
+			kind:  LUNAR,
 		},
 		{
-			Day:   15,
-			Month: 1,
-			Name:  "Rằm tháng Giêng",
-			Type:  LUNAR,
+			day:   15,
+			month: 1,
+			name:  "Rằm tháng Giêng",
+			kind:  LUNAR,
 		},
 		{
-			Day:   10,
-			Month: 3,
-			Name:  "Giỗ Tổ Hùng Vương",
-			Type:  LUNAR,
+			day:   10,
+			month: 3,
+			name:  "Giỗ Tổ Hùng Vương",
+			kind:  LUNAR,
 		},
 		{
-			Day:   15,
-			Month: 4,
-			Name:  "Phật Đản",
-			Type:  LUNAR,
+			day:   15,
+			month: 4,
+			name:  "Phật Đản",
+			kind:  LUNAR,
 		},
 		{
-			Day:   5,
-			Month: 5,
-			Name:  "Lễ Đoan Ngọ",
-			Type:  LUNAR,
+			day:   5,
+			month: 5,
+			name:  "Lễ Đoan Ngọ",
+			kind:  LUNAR,
 		},
 		{
-			Day:   15,
-			Month: 7,
-			Name:  "Vu Lan",
-			Type:  LUNAR,
+			day:   15,
+			month: 7,
+			name:  "Vu Lan",
+			kind:  LUNAR,
 		},
 		{
-			Day:   15,
-			Month: 8,
-			Name:  "Tết Trung Thu",
-			Type:  LUNAR,
+			day:   15,
+			month: 8,
+			name:  "Tết Trung Thu",
+			kind:  LUNAR,
 		},
 		{
-			Day:   23,
-			Month: 12,
-			Name:  "Ông Táo chầu trời",
-			Type:  LUNAR,
+			day:   23,
+			month: 12,
+			name:  "Ông Táo chầu trời",
+			kind:  LUNAR,
 		},
 	}
 )
